@@ -168,6 +168,8 @@ a {
 
 .hero-row {
   max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-copy h1 {
@@ -177,15 +179,11 @@ a {
   line-height: 1.15;
 }
 
-.hero-copy p {
-  margin-top: 18px;
-  font-size: 18px;
-  color: var(--muted);
-}
-
 .hero-cta {
   margin-top: 28px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
@@ -275,37 +273,46 @@ a {
   flex-wrap: wrap;
 }
 
-.store-badge {
+.store-badge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #000000;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #000000;
+  line-height: 1.15;
+}
+
+.store-badge-btn:hover {
+  background: #1a1a1a;
+}
+
+.store-badge-btn-disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.store-badge-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.store-badge-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
-  padding: 8px 18px;
-  min-width: 160px;
-  opacity: 0.7;
-  cursor: default;
 }
 
-.store-badge-link {
-  text-decoration: none;
-  color: inherit;
-  opacity: 1;
-  cursor: pointer;
+.store-badge-text-small {
+  font-size: 10px;
 }
 
-.store-badge-link:hover {
-  border-color: var(--primary);
-  background: #eff6ff;
-}
-
-.store-badge-label {
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.store-badge-name {
+.store-badge-text-large {
   font-size: 15px;
   font-weight: 700;
 }
