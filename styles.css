@@ -288,6 +288,18 @@ a {
   cursor: default;
 }
 
+.store-badge-link {
+  text-decoration: none;
+  color: inherit;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.store-badge-link:hover {
+  border-color: var(--primary);
+  background: #eff6ff;
+}
+
 .store-badge-label {
   font-size: 11px;
   color: var(--muted);
