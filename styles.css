@@ -296,6 +296,16 @@ a {
   pointer-events: none;
 }
 
+.store-badge-btn-google {
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #dadce0;
+}
+
+.store-badge-btn-google .store-badge-text-small {
+  color: #5f6368;
+}
+
 .store-badge-icon {
   width: 22px;
   height: 22px;
