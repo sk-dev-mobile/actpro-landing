@@ -167,20 +167,34 @@ a {
 }
 
 .hero-row {
-  max-width: 760px;
+  max-width: 960px;
   margin: 0 auto;
   text-align: center;
 }
 
 .hero-copy h1 {
-  font-size: 40px;
+  font-size: 64px;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.hero-tagline {
+  margin-top: 24px;
+  font-size: clamp(15px, 2.4vw, 20px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+@media (min-width: 640px) {
+  .hero-tagline {
+    white-space: nowrap;
+  }
 }
 
 .hero-cta {
-  margin-top: 28px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -402,7 +416,7 @@ a {
   }
 
   .hero-copy h1 {
-    font-size: 30px;
+    font-size: 42px;
   }
 
   .mobile-app-row {
