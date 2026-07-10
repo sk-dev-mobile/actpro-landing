@@ -30,7 +30,6 @@ jobs:
             --exclude=".git" \
             --exclude=".github" \
             --exclude=".gitignore" \
-            --exclude="README.md" \
             -e "ssh -i ~/.ssh/deploy_key" \
             ./ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/"
 
