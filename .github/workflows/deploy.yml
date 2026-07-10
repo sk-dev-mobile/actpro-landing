@@ -1,0 +1,46 @@
+name: Deploy landing
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  DEPLOY_HOST: 104.171.128.122
+  DEPLOY_USER: landing-deploy
+  DEPLOY_PATH: /opt/actpro/landing
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.LANDING_DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+
+      - name: Sync static files
+        run: |
+          rsync -avz --delete \
+            --exclude=".git" \
+            --exclude=".github" \
+            --exclude=".gitignore" \
+            --exclude="README.md" \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            ./ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/"
+
+      - name: Fix permissions
+        run: |
+          ssh -i ~/.ssh/deploy_key "${DEPLOY_USER}@${DEPLOY_HOST}" \
+            "chmod -R a+rX ${DEPLOY_PATH}"
+
+      - name: Smoke check
+        run: |
+          sleep 2
+          curl -sf -o /dev/null https://act-pro.ru/
+          curl -sf -o /dev/null https://act-pro.ru/assets/actpro-mark.svg
